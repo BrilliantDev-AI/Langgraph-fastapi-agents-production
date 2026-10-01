@@ -99,7 +99,7 @@ graph LR
 - **`tool_call` node** — executes all tool calls concurrently, feeds results back to `chat`
 - **Checkpointer** — `AsyncPostgresSaver` persists the full `GraphState` per `thread_id` (session), enabling resume on interrupts and multi-turn memory
 
-## Key design decisions
+## The Key design decisions
 
 **Memory search and state check run concurrently.** On every non-resumed request, `aget_state` (to check for interrupts) and `memory.search` (to fetch relevant memories) run in parallel with `asyncio.gather`, saving 200–500ms per request.
 
